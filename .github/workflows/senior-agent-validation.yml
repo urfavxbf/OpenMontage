@@ -1,0 +1,40 @@
+name: Validate Senior Multidisciplinary Agent
+on:
+  pull_request:
+    paths:
+      - '.github/agents/senior-multidisciplinary.agent.md'
+      - '.github/skills/senior-multidisciplinary-agent/**'
+      - '.agents/skills/senior-multidisciplinary-agent/**'
+      - 'docs/SENIOR_MULTIDISCIPLINARY_AGENT.md'
+      - '.github/workflows/senior-agent-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  skill-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate both installed skills and reference paths
+        run: |
+          python3 .agents/skills/senior-multidisciplinary-agent/scripts/validate_skill.py
+          python3 .github/skills/senior-multidisciplinary-agent/scripts/validate_skill.py
+      - name: Verify identical Copilot and Codex skill bundles
+        run: |
+          diff -qr .agents/skills/senior-multidisciplinary-agent .github/skills/senior-multidisciplinary-agent
+      - name: Check script syntax and custom agent metadata
+        run: |
+          python3 -m py_compile .agents/skills/senior-multidisciplinary-agent/scripts/*.py
+          python3 -m py_compile .github/skills/senior-multidisciplinary-agent/scripts/*.py
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('.github/agents/senior-multidisciplinary.agent.md')
+          s = p.read_text()
+          assert s.startswith('---\nname: Senior Multidisciplinary Engineer\n')
+          assert '\ndescription:' in s
+          assert 'AGENT_GUIDE.md' in s
+          print('PASS: OpenMontage senior custom agent profile')
+          PY
