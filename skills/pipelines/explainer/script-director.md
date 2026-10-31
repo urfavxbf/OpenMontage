@@ -70,7 +70,7 @@ BUILD (15-Xs)   → Progressive revelation. Each section builds on the last.
 CLIMAX (X-5s before end) → The "aha" moment. Everything clicks into place.
                             This is the payoff for the setup's knowledge gap.
 
-LANDING (last 5s) → Quick recap of core message + CTA.
+LANDING (last 5s) → Quick recap of core message; add a CTA only if the approved brief requests one.
                      Don't introduce new information here.
 ```
 
@@ -200,7 +200,7 @@ Score your script (1-5):
 | **Voice performance** | Are pauses, emphasis, pace, and sample section explicit? |
 | **Jargon management** | Technical terms explained or have pronunciation guides? |
 | **Climax payoff** | Does the aha moment deliver on the hook's promise? |
-| **CTA relevance** | Is the call to action specific and actionable? |
+| **Ending relevance** | Does the ending deliver the core takeaway, with a CTA only if the approved brief requests one? |
 
 If any dimension scores below 3, revise before submitting.
 

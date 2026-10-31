@@ -15,7 +15,7 @@ CHAPTER LENGTH:    2-4 minutes per chapter
 NARRATION:        150-160 WPM
 MUSIC BED:        Continuous, ducked 18-20 dB below speech
 TARGET LUFS:      -14 LUFS integrated
-END SCREEN:       Last 20 seconds (YouTube end screen cards)
+ENDING:           Core takeaway; end screen only if requested in the approved brief
 ```
 
 ## Retention Benchmarks (2025-2026 Data)
@@ -49,7 +49,7 @@ END SCREEN:       Last 20 seconds (YouTube end screen cards)
 | 0:00-0:30 | **55%+ leave in first 60s** | Hook + tension must be complete by 0:30. Must retain 70%+ here. |
 | 2:00-3:00 | **Retention valley** — initial curiosity spent | Deliver first major payoff BEFORE 2:00, pattern interrupt at 1:45 |
 | 55-65% mark | **Secondary exodus** in long-form | Re-engage with burst sequence + open loop resolution |
-| Last 20s | End screen opportunity | CTA + end screen cards |
+| Last 20s | Resolve the core idea | Takeaway; optional approved end screen |
 
 ### Survival Tactics for the 2-3 Minute Valley
 
@@ -101,7 +101,7 @@ These verbal signposts give viewers a reason to stay through the next segment.
 [CHAPTER 3]    6:15 - 9:00    Key insight / "aha" moment
 [PROOF]        9:00 - 10:30   Demonstration / example
 [CONCLUSION]   10:30 - 11:30  Implications + reframe
-[OUTRO]        11:30 - 12:00  CTA + end screen
+[OUTRO]        11:30 - 12:00  Core takeaway; optional approved CTA/end screen
 ```
 
 ### Chapter Length Rules
@@ -186,16 +186,18 @@ Chapters improve navigation and can boost retention by letting viewers skip to r
 
 ## End Screen & Cards
 
-### End Screen (Last 20 Seconds)
+### Optional End Screen (Last 20 Seconds)
+
+Use channel end screens, subscription asks, next-video recommendations, and playlist links only when requested by the approved brief. Otherwise finish with the topic's takeaway; do not reserve time for promotion. Use only supplied or verified destinations.
 
 - YouTube allows end screen elements in the **last 5-20 seconds**
-- Include: subscribe button, next video recommendation, playlist link
-- **Do NOT put critical content in the last 20 seconds** — it gets covered
-- Verbal CTA: "If you found this helpful, check out this next video on..."
+- If requested: include the approved channel elements and destinations
+- When using an approved end screen, keep essential content clear of its overlays
+- Narrate a CTA only if requested in the approved brief
 
 ### Info Cards
 
-- Place at moments when a related topic is mentioned
+- Use cards only when requested in the approved brief; place them when a related topic is mentioned
 - Max 1 card per 2 minutes — too many feels spammy
 - Best placement: when you reference a concept covered in another video
 
@@ -210,7 +212,7 @@ When building long-form content:
 5. **Continuous music bed** — use `music_gen` for full-length track, duck 18-20 dB
 6. **Narrate at 150-160 WPM** — slower than short-form, clearer for learning
 7. **Check LUFS per chapter** — should be consistent (< 2 LUFS variation)
-8. **Reserve last 20 seconds** for end screen — no essential content there
+8. **Resolve the core idea at the ending**; reserve end-screen time only when requested in the approved brief
 9. **Add chapter timestamps** — include in publish stage metadata
 10. **Target 40-60% average view duration** — if retention drops below 30% at any point, that section needs a pattern interrupt
 
@@ -221,19 +223,19 @@ When building long-form content:
 0:03-0:08   Verbal hook (promise/question)
 0:08-0:15   Stakes ("here's why this matters")
 0:15-0:30   Value preview + open loop planted
-0:30-0:35   Branded intro (5 sec max)
+0:30-0:35   Topic transition; branded intro only if requested in the approved brief
 0:35-1:45   Body segment 1 (high energy, cuts every 10-15s)
 1:45-2:00   Pattern interrupt to bridge retention valley
 2:00-3:00   First major payoff delivered
 3:00-3:05   Chapter 2 mini-hook + bridging sentence
 3:00-5:30   Body segment 2 (stabilized pacing, 15-25s cuts)
-~5:00       Mid-roll CTA (subscribe ask, after earning value)
+~5:00       Core insight or worked example; no automatic subscription ask
 5:30-8:00   Body segment 3 (B-roll heavy, callbacks)
 7:00-7:15   Burst sequence (5-10 quick cuts to re-engage)
 8:00-10:00  Body segment 4 (mix calm + energy bursts)
 9:30        Open loop resolution / major callback payoff
 10:00-11:20 Final segment + main reveal
-11:00       Card placement (last 20% of video)
-11:20-11:40 Outro: tease next content, do NOT say goodbye
-11:40-12:00 End screen (last 20 seconds), 1-2 elements
+11:00       Clarify the final evidence; add a card only if approved
+11:20-11:40 Outro: resolve the question and reinforce the takeaway
+11:40-12:00 Final takeaway; 1-2 end-screen elements only if approved
 ```

@@ -12,10 +12,6 @@
 <p align="center"><strong>The first open-source, agentic video production system.</strong></p>
 
 <p align="center">
-  <a href="https://openmontage.video"><img src="https://img.shields.io/badge/Website-openmontage.video-d14a28?style=for-the-badge" alt="openmontage.video"></a>
-</p>
-
-<p align="center">
   <a href="#start-from-a-video-you-already-love">Paste A Video</a> &nbsp;·&nbsp;
   <a href="#quick-start">Quick Start</a> &nbsp;·&nbsp;
   <a href="#try-these-prompts">Try These Prompts</a> &nbsp;·&nbsp;
@@ -28,23 +24,6 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPLv3-blue.svg" alt="License"></a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/trending">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset=".github/assets/repo-of-the-day-dark.svg">
-      <img alt="🏆 #1 Repository of the Day on GitHub Trending" src=".github/assets/repo-of-the-day-light.svg" height="60">
-    </picture>
-  </a>
-</p>
-
-<p align="center"><strong>Follow The Build</strong></p>
-
-<p align="center">
-  <a href="https://www.youtube.com/@OpenMontage"><img src="https://img.shields.io/badge/YouTube-%40OpenMontage-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"></a>
-  <a href="https://x.com/calesthioailabs"><img src="https://img.shields.io/badge/X-%40calesthioailabs-111111?style=for-the-badge&logo=x&logoColor=white" alt="X"></a>
-  <a href="https://github.com/calesthio/OpenMontage/discussions"><img src="https://img.shields.io/badge/Community-GitHub%20Discussions-0b1220?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Discussions"></a>
 </p>
 
 ---
@@ -100,10 +79,6 @@ Turn your AI coding assistant into a full video production studio. Describe what
 </div>
 
 > **"One Prompt Built This Complete 3D World"** — a continuous 60-second journey through one coherent, editable fantasy world. Distinct terrain regions, an inhabited village, waterways, ruins, dense vegetation, and a late hero-landmark reveal are assembled from textured 3D assets, then brought together with cinematic lighting, atmospheric music, and a planned camera path.
-
-<p align="center">
-  <a href="https://www.youtube.com/@OpenMontage?sub_confirmation=1"><strong>Subscribe to @OpenMontage on YouTube</strong></a> to see new videos as they ship — every video includes the full prompt, pipeline, tools used, and cost so you can reproduce it yourself.
-</p>
 
 ---
 
@@ -722,8 +697,6 @@ Made something cool? Post it in Show and Tell — we'd love to see what you buil
 
 ## Contact
 
-For updates, releases, and behind-the-scenes build notes, follow [@calesthioailabs](https://x.com/calesthioailabs).
-
 For bugs, feature requests, and workflow discussions, use [GitHub Issues](https://github.com/calesthio/OpenMontage/issues) and [GitHub Discussions](https://github.com/calesthio/OpenMontage/discussions) so everything stays visible and actionable.
 
 ---
@@ -740,18 +713,6 @@ make test
 
 ---
 
-## Star History
-
-<a href="https://star-history.dera.page/#calesthio/OpenMontage&type=date&legend=top-left">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=calesthio/OpenMontage&type=date&theme=dark&legend=top-left" />
-    <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=calesthio/OpenMontage&type=date&legend=top-left" />
-    <img alt="Star History Chart" src="https://star-history.dera.page/svg?repos=calesthio/OpenMontage&type=date&legend=top-left" />
-  </picture>
-</a>
-
----
-
 ## License
 
 [GNU AGPLv3](LICENSE)
@@ -759,7 +720,3 @@ make test
 ---
 
 **OpenMontage** — Production-grade video with real quality enforcement, orchestrated by your AI assistant.
-
-If this project looks useful to you, a ⭐ would really mean a lot — it helps others discover it too.
-
-If you'd like to go further, [sponsor the project](https://github.com/sponsors/calesthio) — OpenMontage is built nights and weekends, and your support makes that sustainable.
