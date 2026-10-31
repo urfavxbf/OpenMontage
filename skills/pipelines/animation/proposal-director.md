@@ -135,14 +135,14 @@ registry.discover()
 summary = registry.provider_menu_summary()  # see AGENT_GUIDE.md > Mandatory Preflight
 ```
 
-Then render the scan from `summary`, grouping by capability. Example shape you should **generate from the registry**, not copy:
+Record the complete scan internally. Present capabilities needed by the requested/approved approach, using live registry data. Example shape you should **generate from the registry**, not copy; omit unused capability families:
 
 ```
 TOOL AVAILABILITY SCAN
 ──────────────────────
 Image generation:  {configured}/{total}
   ✅ {tool_name} ({provider}) — available
-  ❌ {tool_name} ({provider}) — {install_instructions trimmed to one line}
+  Required gap, if any: {missing requirement for the requested path}
 Video generation:  {configured}/{total}
   ...
 Composition runtimes:  {ffmpeg} / {remotion} / {hyperframes}
@@ -152,6 +152,7 @@ Math/Diagram: {configured}/{total}
 ```
 
 **Rules for this output:**
+- If the approved approach works, proceed without offering unrelated image/video provider setup. Use setup metadata only for a required gap or an explicit setup question.
 - Every name, provider, cost, and install instruction comes from `provider_menu_summary()` or `provider_menu()`. Don't type them from memory — provider surfaces change between releases.
 - Never cite a cost that isn't live in the tool's `estimate_cost` or install metadata.
 - Composition runtimes are a separate section because the "Present Both" HARD RULE needs all three engines visible.
@@ -182,10 +183,9 @@ What it looks like: Multiple AI-generated images per scene, crossfaded with
 camera motion (zoom, pan, ken-burns) and particle overlays (fireflies, mist,
 sparkles). Creates the illusion of movement from still frames.
 
-You need: An image generation API key.
+You need: An available image provider, cloud or local.
   → You already have: {from provider_menu_summary: available image_generation providers}
-  → Alternative: {from setup_offers: 1-env-var image_generation tools}
-  → Alternative: local Stable Diffusion (see local_diffusion tool install_instructions)
+  → Required setup, only if no approved image path is available: {registry requirement and supported alternatives}
 
 Estimated cost for 30s video: pull per-image costs from each provider's
 `estimate_cost` (do NOT hardcode — they drift between releases).
@@ -198,10 +198,10 @@ APPROACH B: Clip-Based Video
 What it looks like: AI-generated 3-5 second video clips assembled as a story.
 Most cinematic output but hardest to maintain visual consistency across clips.
 
-You need: A video generation API key.
+You need: An available video provider, cloud or local.
   → Currently available: {from provider_menu_summary: available video_generation providers}
-  → To enable: {from setup_offers: 1-env-var video_generation tools}, or
-    install a local video model (see video_selector fallback_tools).
+  → Required setup, only if the requested clip-based path is unavailable:
+    {registry requirement and supported video_selector fallback_tools}
 
 Estimated cost for 30s video: pull from each provider's `estimate_cost` on the
   actual clip plan — per-clip costs range widely between providers and change

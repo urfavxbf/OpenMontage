@@ -676,7 +676,7 @@ Tencent TokenHub uses a credit-based pricing system (1 credit = 1.2 RMB ≈ $0.1
 | YT-Video-2.0 | 480p | 2 | ~$0.33 |
 | YT-Video-2.0 | 720p / 1080p | 5 | ~$0.83 |
 
-> **Free tier:** Tencent occasionally offers new-user credits for TokenHub. Check the [TokenHub console](https://console.cloud.tencent.com/tokenhub) for current promotions.
+> **Access and billing:** TokenHub requires valid provider credentials and is subject to the account's current billing terms and quotas.
 
 ---
 

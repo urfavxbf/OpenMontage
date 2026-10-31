@@ -35,8 +35,8 @@ Collect everything needed for metadata:
 - Opening line: restate the hook with the main value proposition
 - Body: key topics covered, with relevant keywords naturally included
 - Chapters: timestamp markers for each major section (from script sections)
-- Call to action: subscribe/like/follow
-- Links: relevant resources mentioned in the video
+- Call to action: include only when requested by the approved brief; otherwise end with the topic's takeaway
+- Links: preserve required attribution and relevant cited resources; add product/channel links only when requested by the approved brief, using supplied or verified destinations
 
 **Tags/Keywords** (platform-dependent):
 - 5-10 specific tags derived from proposal packet's key_points
@@ -144,7 +144,7 @@ Score (1-5):
 | Criterion | Question |
 |-----------|----------|
 | **SEO quality** | Would this title and description rank well for the topic? |
-| **Description completeness** | Does the description include chapters, CTA, and keywords? |
+| **Description completeness** | Does it include chapters, keywords, required credits, and any CTA requested by the approved brief? |
 | **Thumbnail concept** | Would this thumbnail stand out in a feed? |
 | **Export package** | Is everything a creator needs in the export directory? |
 | **Platform fit** | Is metadata tailored to the target platform? |
@@ -160,7 +160,7 @@ Validate the publish_log against the schema and persist via checkpoint.
 - **Generic titles**: "Video About X" loses to "X Explained in 60 Seconds" every time. Be specific and compelling.
 - **No chapters**: YouTube rewards videos with chapters. Always include them.
 - **Description keyword stuffing**: Write for humans first, search engines second. Natural language with keywords woven in.
-- **Forgetting the CTA**: Every description should end with a call to action.
+- **Unrequested promotion**: Do not append subscribe/like/follow prompts, sponsor requests, affiliate links, or unrelated websites. A CTA belongs only when the approved brief requests it.
 - **Wrong platform format**: YouTube descriptions differ from TikTok captions. Tailor to the target platform.
 
 ---

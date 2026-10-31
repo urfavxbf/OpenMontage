@@ -19,20 +19,17 @@ python -c "
 from tools.tool_registry import registry
 import json
 registry.discover()
-envelope = registry.support_envelope()
-menu = registry.provider_menu()
-print('=== ENVELOPE ===')
-print(json.dumps(envelope, indent=2))
-print('=== MENU ===')
-print(json.dumps(menu, indent=2))
+print(json.dumps(registry.provider_menu_summary(), indent=2))
 "
 ```
 
 Parse the output into three buckets:
 
-1. **Available** — tools with `status: AVAILABLE`
-2. **Quick unlocks** — tools with `status: UNAVAILABLE` whose `install_instructions` reference an env var (1-minute fixes)
-3. **Hardware unlocks** — tools requiring GPU or local model downloads
+1. **Available** — `capabilities[]` with a nonzero `configured` count, their `available_providers`, and the available `composition_runtimes`
+2. **Relevant gaps** — capabilities required by a specific user request but unavailable
+3. **Setup reference** — unavailable tools and their requirements, retained for explicit setup questions rather than included in the greeting
+
+For a relevant gap, inspect `provider_menu()` for per-tool status and `install_instructions`; the summary contains capability counts rather than individual tool statuses.
 
 ### Step 2: Determine the User's Setup Tier
 
@@ -62,10 +59,9 @@ available — not "Remotion" alone. A fresh-session agent that doesn't
 mention HyperFrames by name will fail to present it at proposal time;
 naming it here sets the expectation that the agent is runtime-agnostic.
 
-If only one is available, note it in the summary and mention what the
-other would unlock. If neither is available, tell the user their options
-are FFmpeg-only (simple concat/trim) and what's needed to unlock HTML/React
-composition.
+If only one is available, name the working runtime. If neither is available,
+explain the available FFmpeg-only path (simple concat/trim). Discuss additional
+runtime setup when the requested treatment requires it or the user asks.
 
 **Do NOT pick a runtime during onboarding.** Runtime selection happens at
 the proposal stage, after the agent understands the brief. During
@@ -87,14 +83,14 @@ Present a **short, friendly capability summary**. Do NOT dump the raw provider m
 
 **Available pipelines:** [List the pipelines that work with their setup, with one-line descriptions]
 
-**Quick upgrades:** [If applicable — summarize the best 1-2 unlocks from `provider_menu()` based on the user's missing capabilities and actual install instructions. Do not hardcode `FAL_KEY` or any provider as the default suggestion.]
+**Relevant limitation:** [Include only if the user's stated request requires an unavailable capability; explain the actual missing requirement and a supported path. Omit for an exploratory greeting with usable tools.]
 
 ---
 
 **Rules for this presentation:**
 - Lead with what WORKS, not what's missing. The user should feel empowered, not inadequate.
 - Keep it to 8-12 lines max. Don't overwhelm.
-- Mention at most 2 quick-unlock suggestions. Don't nag about every missing key.
+- Offer starter paths that work now. Do not append optional provider setup or upgrade suggestions to the greeting.
 - Read actual `install_instructions` from the registry — do not hardcode provider names or key names.
 
 ### Step 4: Offer Starter Prompts
@@ -188,6 +184,6 @@ Common questions and how to respond:
 - **Don't dump the raw JSON** from `support_envelope()` or `provider_menu()` on the user. Translate it into plain language.
 - **Don't list every tool.** Group by capability ("I can generate images with FLUX" not "I have flux_image, google_imagen, openai_image, recraft_image...").
 - **Don't explain the architecture** unless asked. "Agent-first, instruction-driven" is interesting to developers, but the user came to make a video, not study the codebase.
-- **Don't apologize for missing capabilities.** Frame as "here's what you have" and optionally "here's a quick upgrade." Never "unfortunately you don't have..."
+- **Describe available capabilities plainly.** Discuss missing setup only when needed for the user's request or in response to a setup question.
 - **Don't skip straight to production** if the user seems uncertain or exploratory. Take 30 seconds to orient them — it saves 10 minutes of confusion later.
 - **Don't suggest prompts that require tools the user doesn't have.** Every prompt must be achievable with their current setup. Mark any that need specific keys clearly.

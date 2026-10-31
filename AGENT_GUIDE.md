@@ -87,6 +87,17 @@ Core loop:
 4. Present the user with concepts, tool plan, production plan, and cost.
 5. Execute stage by stage with checkpoints.
 
+## Clean Production Contract
+
+Production messages should describe the requested video, progress, costs, approvals, and actionable errors. Do not append sponsor or donation requests, social-follow prompts, affiliate links, unrelated websites, or provider sales pitches.
+
+- Use configured tools, including free and local providers, that satisfy the approved plan. An unavailable provider outside that plan is not a blocker and does not need a setup offer.
+- Give setup instructions only when the user asks about setup or a capability required by the requested/approved path is unavailable. Read the actual requirement from the registry; preserve authentication, paid API requirements, quotas, safety restrictions, and usage limits.
+- Continue automatically through stages whose manifest does not require approval. Honor gated stages and valid recorded full-run approval policies through the checkpoint protocol.
+- Add promotional CTAs, channel end screens, product links, or branding to scripts, compositions, descriptions, and delivery messages only when the approved brief requests them. Do not invent destinations.
+- Preserve required copyright, licenses, source citations, asset credits, provider documentation, and legally required notices. A relevant reference or required attribution URL is not an advertisement.
+- Verify the final render and export path before reporting success. Surface real errors and use only supported, authorized fallbacks; never conceal a failed render or substitute an unapproved deliverable.
+
 ## Decision Communication Contract
 
 For any meaningful production decision, the agent must communicate the decision before acting. The user should never have to infer which provider, model, or render path was chosen after the fact.
@@ -132,7 +143,7 @@ The presentation MUST include, for each runtime:
 
 Then wait for explicit user approval before advancing. Record the full shortlist — BOTH runtimes plus any "ffmpeg" option that applies — as `options_considered` in the `render_runtime_selection` decision logged in `decision_log`. A decision log entry with only one runtime considered when both were available is a CRITICAL reviewer finding.
 
-Exception: if only one runtime is available on the machine, the agent proceeds with it but MUST say so explicitly ("HyperFrames isn't installed on this machine; I'm proceeding with Remotion. Install HyperFrames if you want the alternative."). The `render_runtime_selection` decision still records the unavailable option as `rejected_because: "runtime not available on this machine"`.
+Exception: if only one runtime is available on the machine, the agent proceeds with it but MUST say so explicitly ("HyperFrames isn't installed on this machine; I'm proceeding with Remotion."). The `render_runtime_selection` decision still records the unavailable option as `rejected_because: "runtime not available on this machine"`.
 
 This rule applies to every pipeline that invokes `video_compose` — not just Wave 1. A pipeline's director skill may recommend a runtime, but that recommendation is input to the conversation with the user, not a decision.
 
@@ -277,8 +288,8 @@ The summary returns four fields the agent should translate into plain language:
 
 - `composition_runtimes` — booleans for `ffmpeg`, `remotion`, `hyperframes`. This is the source of truth for the "Present Both Composition Runtimes (HARD RULE)" check.
 - `capabilities[]` — one entry per capability family with `configured / total` counts and provider lists. Ready-made for the "N of M configured" menu.
-- `setup_offers[]` — unavailable tools whose install is a 1-minute env-var fix. Lead with these when offering upgrades.
-- `runtime_warnings[]` — specific signals like "hyperframes: npm package not resolvable". Surface these to the user verbatim — they're the kind of silent-failure bugs that break the governance contract.
+- `setup_offers[]` — setup metadata for unavailable tools. Consult it when the requested path needs setup or the user asks; it is not a list of promotions to present.
+- `runtime_warnings[]` — specific signals like "hyperframes: npm package not resolvable". Surface warnings affecting the requested/approved path; retain other findings in preflight records for troubleshooting.
 
 Then, for deeper inspection (only when the summary isn't enough):
 
@@ -296,11 +307,11 @@ Then:
 2. Check every `required_tools` entry against the registry.
 3. Check `fallback_tools` for unavailable tools.
 4. Report one of: `passed`, `degraded`, or `blocked`.
-5. Do not start production until the user understands the real capability envelope.
+5. Explain relevant limitations before production. If the approved path is available, proceed to the next eligible stage without waiting for unrelated provider setup.
 
 ### Provider Menu (Mandatory at Preflight)
 
-Already fetched via `provider_menu_summary()` above. Read that output and **present it to the user as a capability menu**, not as a flat tool list. Use `provider_menu()` directly only when you need the per-tool detail the summary collapses.
+Already fetched via `provider_menu_summary()` above. Present a concise capability menu for the requested workflow, not a flat tool list. Use `provider_menu()` directly only when you need the per-tool detail the summary collapses. Keep the complete discovery record available for explicit capability/setup questions.
 
 **How to present:**
 
@@ -314,54 +325,32 @@ YOUR CAPABILITIES
   Composition:       3/3 configured (FFmpeg, video_stitch, video_trimmer)
 
   You can produce videos now with images + TTS + FFmpeg.
-  Quick upgrades available — see below.
+  Proceeding with the approved tools; no additional provider setup is needed.
 ```
 
-For EACH capability with unavailable providers, read the `install_instructions` field from the menu output and present setup options grouped by effort:
-
-```
-QUICK SETUP OPTIONS (1-minute each — set an env var in .env)
-
-  Video Generation (0/13 -> unlock the biggest upgrade):
-    Each unavailable provider lists its own install_instructions.
-    Read them from the provider_menu output and present grouped by env var.
-    Example: if 3 tools need FAL_KEY, group them: "FAL_KEY unlocks 3 providers"
-
-  Image Generation (1/7 -> more style options):
-    Same pattern — read install_instructions from each unavailable tool.
-
-  Text-to-Speech (1/3):
-    Same pattern.
-
-LOCAL OPTIONS (free, needs hardware):
-  Tools with runtime=LOCAL or runtime=LOCAL_GPU — read from the menu.
-
-Already Available:
-  List what's working. The user should feel good about what they have.
-```
+If a required capability is unavailable, name that capability and the actual missing dependency or credential. Read its `install_instructions` from the registry and explain supported alternatives, including free/local options that meet the brief. Obtain approval for a material change to the selected provider or deliverable. Do not enumerate setup options for unrelated capabilities.
 
 **Rules:**
 - Do NOT hardcode provider names, API key names, or setup URLs in your prompts.
   Read them from the registry's `install_instructions` field on each tool.
-- Always show the ratio: "X of Y configured" — this makes breadth visible.
+- For relevant capabilities, use "X of Y configured" when it helps explain availability.
 - Group by capability, not by individual tool.
-- Show what they CAN do now, then what they COULD unlock.
+- Show what can satisfy the brief now. Discuss additional setup only for a required gap or an explicit setup question.
 - If the user declines setup, proceed with the best available path — no nagging.
 - If a tool shares an env var with others, group them (read from `dependencies` field).
 
 ### Setup Offer Protocol
 
-When tools are `UNAVAILABLE` but can be fixed with simple configuration, **offer the user setup help instead of silently working around the limitation.** Many tools are one env var away from working.
+When a tool required by the requested/approved path is `UNAVAILABLE`, report the missing requirement and use the registry's setup guidance. The same guidance is available when the user explicitly asks about setup. Unused tools do not trigger offers or pauses.
 
 | Fix Complexity | Action |
 |----------------|--------|
-| **1-minute fix** (env var) | Offer to help configure now — read `install_instructions` from the tool |
-| **5-minute fix** (install) | Explain what to install and why — read `install_instructions` from the tool |
-| **Complex fix** (GPU, model download) | Note the limitation, explain what it would unlock, move on |
+| **Credential required** | Name the required credential from `install_instructions`; respect centrally managed installation rules |
+| **Dependency required** | Explain the missing install for the selected tool and any supported alternatives |
+| **Hardware/model required** | Explain the concrete resource limitation and whether the requested path is blocked |
 
 **Rules:**
-- Always tell the user what they're missing AND what they'd gain
-- Show the cost difference (free local vs. paid API)
+- Explain the impact on the requested deliverable, including any cost difference between viable paths
 - If the user declines setup, proceed with the best available path — no nagging
 - Group related fixes (tools sharing the same env var dependency)
 
@@ -716,5 +705,5 @@ The `.agents/skills/` directory is large. When you're not coming in through a to
 - Do not begin asset generation before user approval on the production plan.
 - Do not hide degraded paths. Record substitutions and blocked options explicitly.
 - Do not present a single unavailable tool in isolation. Always show the full capability picture: "X of Y providers configured for this capability."
-- Do not skip the Provider Menu at preflight. The user must see what they have AND what they could unlock.
+- Do not skip capability discovery at preflight. Present the relevant working path and real blockers without unsolicited setup pitches.
 - Do not change provider, model, or render path without telling the user first and getting approval when the change is material.

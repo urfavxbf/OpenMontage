@@ -164,12 +164,14 @@ MAX SIZE:    500 MB (desktop), 287.6 MB (iOS), 72 MB (Android)
 
 ## Structure Templates
 
+End with the useful result or takeaway. Add follow/share/comment prompts, promotional links, or other CTAs only when the approved brief requests them; use only supplied or verified destinations.
+
 ### 15-Second Quick Tip
 ```
 [0-1s]   HOOK: Bold text + voice starts immediately
 [1-3s]   CONTEXT: One sentence setup
 [3-12s]  CONTENT: The tip/fact/technique (show, don't tell)
-[12-15s] PAYOFF: Result or CTA text overlay
+[12-15s] PAYOFF: Result or key takeaway text overlay
 ```
 
 ### 30-Second Explainer
@@ -178,7 +180,7 @@ MAX SIZE:    500 MB (desktop), 287.6 MB (iOS), 72 MB (Android)
 [1-5s]   PROBLEM: Why this matters
 [5-22s]  SOLUTION: Step-by-step with visual changes every 2-3s
 [22-28s] RESULT: Show the outcome
-[28-30s] CTA: Follow/share/comment prompt
+[28-30s] TAKEAWAY: Summarize the useful result
 ```
 
 ### 60-Second Mini Tutorial
@@ -187,7 +189,7 @@ MAX SIZE:    500 MB (desktop), 287.6 MB (iOS), 72 MB (Android)
 [2-8s]   SETUP: "Here's how to do X in Y steps"
 [8-45s]  STEPS: 3-5 steps, ~8s each, visual change per step
 [45-55s] RESULT: Before/after or final demo
-[55-60s] CTA + LOOP: End connects back to start for replay
+[55-60s] TAKEAWAY + LOOP: End connects back to start for replay
 ```
 
 ## Applying to OpenMontage

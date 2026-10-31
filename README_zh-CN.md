@@ -25,18 +25,6 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPLv3-blue.svg" alt="License"></a>
 </p>
 
-<p align="center">
-  <a href="https://github.com/trending"><img src="https://img.shields.io/badge/%F0%9F%8F%86%20%231%20on%20GitHub%20Trending-Repository%20of%20the%20Day-8957E5?style=for-the-badge&labelColor=1a1a2e" alt="#1 on GitHub Trending — Repository of the Day"></a>
-</p>
-
-<p align="center"><strong>关注开发进展</strong></p>
-
-<p align="center">
-  <a href="https://www.youtube.com/@OpenMontage"><img src="https://img.shields.io/badge/YouTube-%40OpenMontage-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube"></a>
-  <a href="https://x.com/calesthioailabs"><img src="https://img.shields.io/badge/X-%40calesthioailabs-111111?style=for-the-badge&logo=x&logoColor=white" alt="X"></a>
-  <a href="https://github.com/calesthio/OpenMontage/discussions"><img src="https://img.shields.io/badge/Community-GitHub%20Discussions-0b1220?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Discussions"></a>
-</p>
-
 ---
 
 将您的 AI 编程助手变成一个完整的视频制作工作室。用通俗的语言描述您的需求——您的智能体会自动处理研究、脚本编写、资产生成、剪辑以及最终合成。
@@ -78,10 +66,6 @@
 </div>
 
 > **“潜入深渊 (Into the Abyss)”** — 以动漫风格渲染的深海探索。生物发光的花园、珊瑚大教堂和发光生物 — 12 张 FLUX 生成的图像，配有闪烁和薄雾粒子叠加、光线特效、平滑的摄像机运动和海洋环境配乐。总成本：**0.15 美元**。完全不需要视频生成 API。
-
-<p align="center">
-  <a href="https://www.youtube.com/@OpenMontage?sub_confirmation=1"><strong>订阅 YouTube 上的 @OpenMontage</strong></a>，第一时间观看发布的最新视频 — 每个视频都包含了完整的提示词、流水线、使用的工具和成本，方便您自行复现。
-</p>
 
 ---
 
@@ -650,8 +634,6 @@ OpenMontage 被设计为高度可扩展的。最常见的两种贡献是：
 
 ## 联系方式
 
-有关更新、发布版以及幕后的开发记录，请关注 [@calesthioailabs](https://x.com/calesthioailabs)。
-
 有关错误反馈、功能请求和工作流讨论，请使用 [GitHub Issues](https://github.com/calesthio/OpenMontage/issues) 和 [GitHub Discussions](https://github.com/calesthio/OpenMontage/discussions)，以确保每件事都能保持可见和可操作。
 
 ---
@@ -675,5 +657,3 @@ make test
 ---
 
 **OpenMontage** — 拥有真正质量把控、由您的 AI 助手编排的生产级视频制作系统。
-
-如果这个项目对您有帮助，点一个 Star 对我们意义重大 —— 这也能帮助其他人发现它。
